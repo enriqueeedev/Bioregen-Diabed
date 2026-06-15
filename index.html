@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIOREGEN DIABED — Medicina Regenerativa de Vanguardia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BIOREGEN DIABED — DESIGN SYSTEM
+   ============================================================ */
+:root {
+  --white:          #FFFFFF;
+  --lab-gray:       #F8FAFC;
+  --surface-100:    #F1F5F9;
+  --surface-200:    #E2E8F0;
+  --border:         rgba(2, 132, 199, 0.12);
+  --border-glass:   rgba(255,255,255,0.18);
+
+  --blue-400:       #38BDF8;
+  --blue-500:       #0EA5E9;
+  --blue-600:       #0284C7;
+  --blue-700:       #0369A1;
+  --blue-900:       #0C4A6E;
+
+  --teal-400:       #2DD4BF;
+  --teal-500:       #14B8A6;
+  --teal-600:       #0D9488;
+  --teal-800:       #115E59;
+  --teal-900:       #134E4A;
+
+  --ink:            #0F172A;
+  --ink-700:        #1E293B;
+  --ink-500:        #334155;
+  --ink-400:        #475569;
+  --ink-300:        #64748B;
+  --ink-200:        #94A3B8;
+
+  --grad-primary:   linear-gradient(135deg, #0284C7 0%, #0D9488 100%);
+  --grad-dark:      linear-gradient(160deg, #0C1929 0%, #0A2A2A 100%);
+  --font:           'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --ease-out-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:    cubic-bezier(0.87, 0, 0.13, 1);
+  --radius-sm:      8px;
+  --radius-md:      16px;
+  --radius-lg:      24px;
+  --radius-xl:      32px;
+  --radius-pill:    999px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font);
+  background: var(--white);
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   GLOBAL UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 768px) { .container { padding: 0 20px; } }
+
+.label-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  background: rgba(2, 132, 199, 0.07);
+  border: 1px solid rgba(2, 132, 199, 0.2);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+}
+.label-eyebrow.teal {
+  color: var(--teal-600);
+  background: rgba(13, 148, 136, 0.07);
+  border-color: rgba(13, 148, 136, 0.2);
+}
+.label-eyebrow .dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  padding: 0;
+  transition: all 0.4s var(--ease-out-expo);
+}
+#nav.scrolled {
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 32px rgba(2, 132, 199, 0.06);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--grad-primary);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(2, 132, 199, 0.3);
+}
+.nav-logo-mark svg { width: 20px; height: 20px; fill: white; }
+.nav-logo-text {
+  display: flex; flex-direction: column; line-height: 1;
+}
+.nav-logo-name {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+.nav-logo-sub {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-300);
+  margin-top: 2px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink-500);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+.nav-links a:hover { color: var(--ink); background: var(--surface-100); }
+.nav-cta {
+  display: flex; align-items: center; gap: 10px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s var(--ease-out-expo);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.btn:hover::after { opacity: 1; }
+.btn-primary {
+  background: var(--grad-primary);
+  color: white;
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.35);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(2, 132, 199, 0.45);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink-500);
+  border: 1px solid var(--surface-200);
+}
+.btn-ghost:hover {
+  background: var(--surface-100);
+  color: var(--ink);
+  border-color: var(--surface-200);
+}
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+/* Animated cellular regeneration canvas */
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.55;
+}
+
+/* Noise texture overlay */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Bottom gradient fade */
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 220px;
+  background: linear-gradient(to top, var(--white), transparent);
+  z-index: 3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 820px;
+  padding: 120px 0 160px;
+}
+
+.hero-label {
+  margin-bottom: 28px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.8s var(--ease-out-expo) 0.3s forwards;
+}
+
+.hero-label .label-eyebrow {
+  color: var(--teal-400);
+  background: rgba(45, 212, 191, 0.12);
+  border-color: rgba(45, 212, 191, 0.3);
+}
+.hero-label .label-eyebrow .dot { background: var(--teal-400); }
+
+.hero-title {
+  font-size: clamp(48px, 7vw, 88px);
+  font-weight: 800;
+  line-height: 1.03;
+  letter-spacing: -0.03em;
+  color: white;
+  margin-bottom: 26px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fade-up 0.9s var(--ease-out-expo) 0.5s forwards;
+}
+
+.hero-title .gradient-word {
+  background: linear-gradient(120deg, #38BDF8, #2DD4BF 60%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.58);
+  max-width: 560px;
+  margin-bottom: 48px;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fade-up 0.9s var(--ease-out-expo) 0.7s forwards;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fade-up 0.9s var(--ease-out-expo) 0.9s forwards;
+}
+
+.btn-glass {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: white;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
+}
+.btn-glass:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.25);
+}
+
+.btn-outline-white {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: rgba(255,255,255,0.7);
+}
+.btn-outline-white:hover {
+  border-color: rgba(255,255,255,0.5);
+  color: white;
+  background: rgba(255,255,255,0.06);
+}
+
+.hero-stats {
+  position: absolute;
+  bottom: 90px;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  animation: fade-up 1s var(--ease-out-expo) 1.2s forwards;
+}
+.hero-stat-card {
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 20px 28px;
+  text-align: center;
+  min-width: 140px;
+}
+.hero-stat-value {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: white;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.hero-stat-value span {
+  background: linear-gradient(120deg, #38BDF8, #2DD4BF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   IDENTITY SECTION
+   ============================================================ */
+#identity {
+  background: var(--white);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+#identity::before {
+  content: '';
+  position: absolute;
+  top: -300px; right: -300px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(2, 132, 199, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.section-header {
+  margin-bottom: 72px;
+}
+.section-header.centered { text-align: center; align-items: center; display: flex; flex-direction: column; }
+.section-header .label-eyebrow { margin-bottom: 20px; }
+
+.section-title {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.section-title em {
+  font-style: normal;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-body {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-400);
+  max-width: 640px;
+}
+
+.identity-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .identity-layout { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.identity-text .section-title { margin-bottom: 20px; }
+.identity-text .section-body { margin-bottom: 36px; }
+
+.identity-metric-row {
+  display: flex;
+  gap: 32px;
+}
+.identity-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.identity-metric-value {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--blue-600);
+  line-height: 1;
+}
+.identity-metric-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-400);
+  letter-spacing: 0.04em;
+}
+
+/* Pillar Cards */
+.pillar-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pillar-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: all 0.4s var(--ease-out-expo);
+  transform-style: preserve-3d;
+}
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--grad-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--ease-out-expo);
+}
+.pillar-card:hover {
+  border-color: rgba(2, 132, 199, 0.2);
+  box-shadow: 0 20px 60px rgba(2, 132, 199, 0.1), 0 4px 20px rgba(0,0,0,0.04);
+  transform: translateY(-4px);
+}
+.pillar-card:hover::before { transform: scaleX(1); }
+
+.pillar-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+.pillar-icon.blue { background: rgba(2, 132, 199, 0.1); }
+.pillar-icon.teal { background: rgba(13, 148, 136, 0.1); }
+.pillar-icon.indigo { background: rgba(99, 102, 241, 0.1); }
+
+.pillar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.pillar-body {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-400);
+}
+
+/* ============================================================
+   SYSTEM SECTION — STICKY SPLIT SCREEN
+   ============================================================ */
+#system {
+  background: var(--lab-gray);
+  border-top: 1px solid var(--surface-200);
+  border-bottom: 1px solid var(--surface-200);
+}
+
+.system-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 900px) {
+  .system-wrapper { grid-template-columns: 1fr; }
+}
+
+/* Left column — text content */
+.system-text-col {
+  padding: 120px 60px 120px 0;
+}
+@media (max-width: 1100px) {
+  .system-text-col { padding: 80px 40px 80px 0; }
+}
+@media (max-width: 900px) {
+  .system-text-col { padding: 80px 0 40px; }
+}
+
+.system-section-header {
+  margin-bottom: 80px;
+}
+
+.system-phase {
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: all 0.7s var(--ease-out-expo);
+}
+.system-phase.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 24px;
+}
+
+.phase-title {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.phase-desc {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-400);
+  margin-bottom: 24px;
+}
+
+.phase-mechanism {
+  background: white;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue-600);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+}
+.phase-mechanism.teal { border-left-color: var(--teal-600); }
+
+.phase-mechanism-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-600);
+  margin-bottom: 8px;
+}
+.phase-mechanism.teal .phase-mechanism-label { color: var(--teal-600); }
+
+.phase-mechanism-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--ink-500);
+}
+
+/* Right column — sticky 3D visual */
+.system-visual-col {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0 40px 60px;
+  border-left: 1px solid var(--surface-200);
+}
+@media (max-width: 1100px) {
+  .system-visual-col { padding: 40px 0 40px 40px; }
+}
+@media (max-width: 900px) {
+  .system-visual-col {
+    position: relative;
+    height: 400px;
+    border-left: none;
+    border-top: 1px solid var(--surface-200);
+    padding: 40px 0;
+  }
+}
+
+.system-canvas-wrap {
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+#system-canvas {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-xl);
+}
+
+.canvas-label {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-300);
+  white-space: nowrap;
+}
+.canvas-label::before, .canvas-label::after {
+  content: '';
+  display: block;
+  width: 32px; height: 1px;
+  background: var(--surface-200);
+}
+
+/* ============================================================
+   SCIENCE SECTION
+   ============================================================ */
+#science {
+  background: linear-gradient(160deg, #09192B 0%, #0A2225 50%, #0C1A2E 100%);
+  padding: 140px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#science::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px; height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.06) 0%, rgba(20, 184, 166, 0.04) 40%, transparent 70%);
+  pointer-events: none;
+}
+
+.science-header {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 1;
+}
+.science-header .label-eyebrow {
+  color: var(--teal-400);
+  background: rgba(45, 212, 191, 0.1);
+  border-color: rgba(45, 212, 191, 0.25);
+  margin-bottom: 24px;
+}
+.science-header .label-eyebrow .dot { background: var(--teal-400); }
+
+.science-quote {
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.88);
+  max-width: 780px;
+  margin: 0 auto 32px;
+  letter-spacing: -0.01em;
+}
+.science-quote strong {
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--blue-400), var(--teal-400));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .bento-grid { grid-template-columns: 1fr; }
+}
+
+.bento-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out-expo);
+}
+.bento-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at top left, rgba(2, 132, 199, 0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.bento-card.teal::before {
+  background: radial-gradient(ellipse at top left, rgba(13, 148, 136, 0.1) 0%, transparent 60%);
+}
+.bento-card:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+}
+.bento-card:hover::before { opacity: 1; }
+
+.bento-icon {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.bento-number {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-400);
+  margin-bottom: 12px;
+}
+.bento-card.teal .bento-number { color: var(--teal-400); }
+.bento-card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.bento-card-body {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ============================================================
+   B2B PORTAL SECTION
+   ============================================================ */
+#b2b {
+  background: var(--white);
+  padding: 140px 0;
+  position: relative;
+}
+
+.b2b-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 64px;
+}
+@media (max-width: 900px) {
+  .b2b-grid { grid-template-columns: 1fr; }
+}
+
+.b2b-card {
+  border: 1px solid var(--surface-200);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s var(--ease-out-expo);
+}
+.b2b-card:hover {
+  border-color: var(--blue-600);
+  box-shadow: 0 24px 64px rgba(2, 132, 199, 0.1);
+  transform: translateY(-6px);
+}
+.b2b-card-number {
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: var(--surface-200);
+  line-height: 1;
+  margin-bottom: 24px;
+  transition: color 0.3s;
+}
+.b2b-card:hover .b2b-card-number { color: rgba(2, 132, 199, 0.12); }
+.b2b-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.b2b-card-body {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-400);
+  margin-bottom: 28px;
+}
+.b2b-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--blue-600);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background: rgba(2, 132, 199, 0.07);
+  transition: all 0.2s;
+}
+.b2b-card-link:hover { background: rgba(2, 132, 199, 0.14); gap: 12px; }
+
+/* ============================================================
+   CONTACT FORM SECTION
+   ============================================================ */
+#contact {
+  background: var(--lab-gray);
+  border-top: 1px solid var(--surface-200);
+  padding: 140px 0;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 100px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 60px; }
+}
+
+.contact-info .section-title { margin-bottom: 16px; }
+.contact-info .section-body { margin-bottom: 48px; }
+
+.contact-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.contact-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.contact-feature-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: white;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.contact-feature-text { font-size: 14px; line-height: 1.6; color: var(--ink-400); }
+.contact-feature-text strong { color: var(--ink); display: block; font-size: 15px; margin-bottom: 2px; }
+
+/* Form */
+.contact-form-wrap {
+  background: white;
+  border: 1px solid var(--surface-200);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+}
+@media (max-width: 600px) {
+  .contact-form-wrap { padding: 28px 24px; }
+}
+
+.form-tabs {
+  display: flex;
+  background: var(--surface-100);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  gap: 2px;
+  margin-bottom: 36px;
+}
+.form-tab {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-400);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out-expo);
+  font-family: var(--font);
+}
+.form-tab.active {
+  background: white;
+  color: var(--blue-600);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.form-grid.single { grid-template-columns: 1fr; }
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-500);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.form-input, .form-select, .form-textarea {
+  font-family: var(--font);
+  font-size: 15px;
+  padding: 12px 16px;
+  border: 1.5px solid var(--surface-200);
+  border-radius: var(--radius-md);
+  background: var(--lab-gray);
+  color: var(--ink);
+  outline: none;
+  transition: all 0.2s;
+  width: 100%;
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--ink-200); }
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--blue-600);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+.form-textarea { resize: vertical; min-height: 100px; }
+.form-select { appearance: none; cursor: pointer; }
+
+.form-submit {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--grad-primary);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out-expo);
+  font-family: var(--font);
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.3);
+  margin-top: 8px;
+  letter-spacing: 0.01em;
+}
+.form-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(2, 132, 199, 0.45);
+}
+
+.form-footer-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--ink-300);
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* Dynamic fields */
+.form-panel { display: none; }
+.form-panel.active { display: contents; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+#footer {
+  background: var(--ink);
+  padding: 80px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+#footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(2, 132, 199, 0.4), rgba(13, 148, 136, 0.4), transparent);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 80px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 48px;
+}
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr; gap: 48px; }
+}
+
+.footer-brand .nav-logo { margin-bottom: 20px; display: inline-flex; }
+.footer-brand .nav-logo-name { color: white; }
+.footer-tagline {
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.38);
+  margin-bottom: 28px;
+}
+.footer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal-400);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+}
+
+.footer-links-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+@media (max-width: 700px) {
+  .footer-links-grid { grid-template-columns: 1fr 1fr; }
+}
+
+.footer-link-group-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 16px;
+}
+.footer-link-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-link-list a {
+  text-decoration: none;
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.5);
+  transition: color 0.2s;
+  line-height: 1;
+}
+.footer-link-list a:hover { color: rgba(255,255,255,0.85); }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer-copy {
+  font-size: 13px;
+  color: rgba(255,255,255,0.25);
+}
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-legal a {
+  font-size: 12px;
+  color: rgba(255,255,255,0.25);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: rgba(255,255,255,0.5); }
+.footer-legal-sep {
+  width: 1px; height: 12px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================================
+   DIVIDER LINE
+   ============================================================ */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--surface-200), transparent);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: rgba(2, 132, 199, 0.4); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+     ============================================================ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+            <path d="M12 4c-4.41 0-8 3.59-8 8s3.59 8 8 8 8-3.59 8-8-3.59-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">BIOREGEN DIABED</span>
+          <span class="nav-logo-sub">Medicina Regenerativa</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#identity">Identidad</a></li>
+        <li><a href="#system">Sistema Integral</a></li>
+        <li><a href="#science">Ciencia</a></li>
+        <li><a href="#b2b">Portal Médico</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="#science" class="btn btn-ghost">Evidencia Clínica</a>
+        <a href="#contact" class="btn btn-primary">Dossier Científico</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="label-eyebrow"><span class="dot"></span>Biotecnología Avanzada · Medicina Regenerativa</span>
+      </div>
+
+      <h1 class="hero-title">
+        El futuro de la<br>
+        <span class="gradient-word">regeneración celular.</span>
+      </h1>
+
+      <p class="hero-sub">
+        Innovación avanzada para la recuperación del tejido y el cuidado especializado. Sistema de biotecnología de doble acción clínicamente respaldado.
+      </p>
+
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-glass">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Dossier Científico
+        </a>
+        <a href="#science" class="btn btn-outline-white">
+          Ver Evidencia Clínica
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat-card">
+        <div class="hero-stat-value"><span>97</span>%</div>
+        <div class="hero-stat-label">Eficacia Clínica</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-value"><span>2</span>x</div>
+        <div class="hero-stat-label">Velocidad de Cierre</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-value"><span>ISO</span></div>
+        <div class="hero-stat-label">Certificación Global</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     IDENTITY SECTION
+     ============================================================ -->
+<section id="identity">
+  <div class="container">
+    <div class="identity-layout">
+      <div class="identity-text">
+        <div class="section-header reveal">
+          <span class="label-eyebrow"><span class="dot"></span>Nuestra Misión</span>
+        </div>
+        <h2 class="section-title reveal reveal-delay-1">
+          Vanguardia en<br><em>Medicina Regenerativa</em>
+        </h2>
+        <p class="section-body reveal reveal-delay-2">
+          En BIOREGEN DIABED somos una empresa biotecnológica a la vanguardia de la medicina regenerativa. Nos dedicamos a la investigación, desarrollo y comercialización de tratamientos avanzados diseñados para acelerar la restauración de tejidos comprometidos, mejorar la calidad de vida de los pacientes y establecer nuevos estándares en biociencia aplicada.
+        </p>
+        <div class="identity-metric-row reveal reveal-delay-3">
+          <div class="identity-metric">
+            <span class="identity-metric-value">14+</span>
+            <span class="identity-metric-label">Patentes Activas</span>
+          </div>
+          <div class="identity-metric">
+            <span class="identity-metric-value">38</span>
+            <span class="identity-metric-label">Ensayos Clínicos</span>
+          </div>
+          <div class="identity-metric">
+            <span class="identity-metric-value">12</span>
+            <span class="identity-metric-label">Países de Operación</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pillar-cards">
+        <div class="pillar-card reveal reveal-delay-1">
+          <div class="pillar-icon blue">🔬</div>
+          <div class="pillar-title">Ciencia de Vanguardia</div>
+          <div class="pillar-body">Respaldados por rigurosa investigación y procesos de patentado internacional en biotecnología médica. Cada formulación pasa por validación en múltiples fases clínicas antes de su comercialización.</div>
+        </div>
+        <div class="pillar-card reveal reveal-delay-2">
+          <div class="pillar-icon teal">🩹</div>
+          <div class="pillar-title">Tratamientos No Invasivos</div>
+          <div class="pillar-body">Enfocados en la comodidad del paciente y la máxima eficacia en la cicatrización y regeneración celular. Protocolos diseñados para minimizar el tiempo de recuperación y maximizar los resultados funcionales.</div>
+        </div>
+        <div class="pillar-card reveal reveal-delay-3">
+          <div class="pillar-icon indigo">⚗️</div>
+          <div class="pillar-title">Solución Integral de Doble Acción</div>
+          <div class="pillar-body">Un enfoque holístico que combina la terapia molecular activa interna con barreras de protección y liberación controlada externa, creando un entorno biológico óptimo para la regeneración completa.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SYSTEM INTEGRAL — STICKY SPLIT SCREEN
+     ============================================================ -->
+<section id="system">
+  <div class="container" style="padding: 0 40px;">
+    <div class="system-wrapper">
+
+      <!-- Left: Scrollable text -->
+      <div class="system-text-col">
+        <div class="system-section-header reveal">
+          <span class="label-eyebrow teal"><span class="dot"></span>Sistema de Doble Fase</span>
+          <h2 class="section-title" style="margin-top: 20px;">
+            El Sistema Integral<br><em>BIOREGEN DIABED</em>
+          </h2>
+          <p class="section-body" style="max-width: 480px;">
+            Una arquitectura terapéutica de precisión que actúa en dos planos simultaneos: a nivel celular profundo y a nivel dérmico externo. Biología de vanguardia aplicada en un protocolo clínico sin precedentes.
+          </p>
+        </div>
+
+        <div class="system-phase" id="phase-1" data-phase="1">
+          <div class="phase-badge">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="4"/></svg>
+            Fase 01
+          </div>
+          <h3 class="phase-title">Inyección Molecular Activa</h3>
+          <p class="phase-desc">
+            Una solución inyectable de alta concentración que actúa directamente en el foco celular del tejido dañado, movilizando los recursos biológicos del organismo con precisión farmacológica.
+          </p>
+          <div class="phase-mechanism">
+            <div class="phase-mechanism-label">Mecanismo de Acción</div>
+            <div class="phase-mechanism-text">Estimula los factores de crecimiento locales (VEGF, EGF, FGF), reactiva la microcirculación capilar y reduce la inflamación crónica de base, preparando el terreno biológico para una curación acelerada y profunda desde el interior de la matriz tisular.</div>
+          </div>
+        </div>
+
+        <div class="system-phase" id="phase-2" data-phase="2">
+          <div class="phase-badge" style="background: var(--teal-800);">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="4"/></svg>
+            Fase 02
+          </div>
+          <h3 class="phase-title">Parche Regenerativo y Protección Externa</h3>
+          <p class="phase-desc">
+            Una matriz bioactiva de ingeniería tisular diseñada para colocarse directamente sobre la lesión como interfaz dermo-protectora inteligente de liberación sostenida.
+          </p>
+          <div class="phase-mechanism teal">
+            <div class="phase-mechanism-label">Mecanismo de Acción</div>
+            <div class="phase-mechanism-text">Actúa como una segunda piel inteligente. Mantiene el ambiente óptimo de humedad (70-80% HR), libera componentes regenerativos de forma controlada mediante gradiente de difusión y protege el área contra patógenos externos, acelerando el cierre definitivo epitelial en hasta un 2× respecto a protocolos convencionales.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Sticky 3D visualization -->
+      <div class="system-visual-col">
+        <div class="system-canvas-wrap">
+          <canvas id="system-canvas"></canvas>
+          <div class="canvas-label" id="canvas-label">Visualización Molecular Interactiva</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SCIENCE SECTION
+     ============================================================ -->
+<section id="science">
+  <div class="container">
+    <div class="science-header reveal">
+      <span class="label-eyebrow"><span class="dot"></span>Propiedad Intelectual & Evidencia</span>
+      <h2 class="section-title" style="color: white; margin: 24px auto 0; max-width: 700px; text-align: center;">
+        Ciencia que <em style="-webkit-text-fill-color: transparent; background: linear-gradient(120deg, #38BDF8, #2DD4BF); -webkit-background-clip: text; background-clip: text;">certifica</em> cada resultado
+      </h2>
+    </div>
+
+    <div class="science-quote reveal reveal-delay-1">
+      Todos nuestros sistemas y fórmulas están respaldados por <strong>rigurosos ensayos clínicos</strong> y se encuentran bajo estrictos procesos de <strong>patente internacional</strong>, asegurando la exclusividad y la autenticidad de nuestra biotecnología en todos los mercados donde operamos.
+    </div>
+
+    <div class="bento-grid">
+      <div class="bento-card reveal reveal-delay-1">
+        <div class="bento-icon">🧬</div>
+        <div class="bento-number">Área 01</div>
+        <div class="bento-card-title">Regeneración de Tejidos Complejos</div>
+        <div class="bento-card-body">Protocolos de biociencia aplicada para la restauración de tejidos musculoesqueléticos, neurales y conectivos con alto índice de complejidad morfológica y biocompatibilidad.</div>
+      </div>
+      <div class="bento-card teal reveal reveal-delay-2">
+        <div class="bento-icon">🩺</div>
+        <div class="bento-number">Área 02</div>
+        <div class="bento-card-title">Cuidado Avanzado de Heridas</div>
+        <div class="bento-card-body">Sistemas de gestión de heridas crónicas y agudas basados en el control del microambiente de la lesión, con respaldo en más de 38 estudios de eficacia documentados internacionalmente.</div>
+      </div>
+      <div class="bento-card reveal reveal-delay-3">
+        <div class="bento-icon">⚕️</div>
+        <div class="bento-number">Área 03</div>
+        <div class="bento-card-title">Terapia Biocompatible</div>
+        <div class="bento-card-body">Formulaciones de altísima biocompatibilidad validadas para su uso en pacientes con comorbilidades metabólicas, garantizando seguridad sistémica y eficacia diferencial en perfiles de alto riesgo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     B2B PORTAL SECTION
+     ============================================================ -->
+<section id="b2b">
+  <div class="container">
+    <div class="section-header centered reveal">
+      <span class="label-eyebrow"><span class="dot"></span>Portal Profesional</span>
+      <h2 class="section-title" style="max-width: 600px; text-align: center;">
+        Diseñado para <em>profesionales de la salud</em>
+      </h2>
+      <p class="section-body" style="text-align: center; margin: 0 auto;">
+        Recursos clínicos, protocolos de evidencia y alianzas estratégicas para centros de atención avanzada, unidades especializadas e instituciones hospitalarias.
+      </p>
+    </div>
+
+    <div class="b2b-grid">
+      <div class="b2b-card reveal reveal-delay-1">
+        <div class="b2b-card-number">01</div>
+        <div class="b2b-card-title">Evidencia Clínica</div>
+        <div class="b2b-card-body">Acceso completo a estudios de caso documentados, tasas de éxito por indicación clínica y reportes exhaustivos de biocompatibilidad y seguridad sistémica del sistema BIOREGEN DIABED.</div>
+        <a href="#contact" class="b2b-card-link">
+          Solicitar Acceso
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </a>
+      </div>
+      <div class="b2b-card reveal reveal-delay-2">
+        <div class="b2b-card-number">02</div>
+        <div class="b2b-card-title">Alianzas Estratégicas</div>
+        <div class="b2b-card-body">Protocolos de integración para centros hospitalarios de alta especialidad, unidades de cuidado avanzado de heridas y clínicas multidisciplinarias con seguimiento personalizado de cuenta.</div>
+        <a href="#contact" class="b2b-card-link">
+          Iniciar Protocolo
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </a>
+      </div>
+      <div class="b2b-card reveal reveal-delay-3">
+        <div class="b2b-card-number">03</div>
+        <div class="b2b-card-title">Capacitación Médica</div>
+        <div class="b2b-card-body">Programa de certificación especializada en la aplicación del sistema de inyección molecular y parches regenerativos. Seminarios presenciales, virtuales y materiales clínicos de referencia.</div>
+        <a href="#contact" class="b2b-card-link">
+          Ver Programa
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     CONTACT FORM SECTION
+     ============================================================ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-info reveal">
+        <span class="label-eyebrow"><span class="dot"></span>Contacto Institucional</span>
+        <h2 class="section-title" style="margin-top: 20px;">Agende una sesión<br><em>informativa</em></h2>
+        <p class="section-body">
+          Solicite el dossier científico de BIOREGEN DIABED o coordine directamente con nuestro equipo de alianzas estratégicas, según su perfil de interés.
+        </p>
+
+        <div class="contact-features">
+          <div class="contact-feature">
+            <div class="contact-feature-icon">📋</div>
+            <div class="contact-feature-text">
+              <strong>Respuesta en 24h hábiles</strong>
+              Nuestro equipo de relaciones institucionales revisará su solicitud con prioridad y confirmará disponibilidad.
+            </div>
+          </div>
+          <div class="contact-feature">
+            <div class="contact-feature-icon">🔒</div>
+            <div class="contact-feature-text">
+              <strong>Confidencialidad garantizada</strong>
+              Toda información compartida está protegida bajo acuerdo de no divulgación estándar y normativa HIPAA/GDPR.
+            </div>
+          </div>
+          <div class="contact-feature">
+            <div class="contact-feature-icon">🌐</div>
+            <div class="contact-feature-text">
+              <strong>Cobertura multinacional</strong>
+              Representantes regionales disponibles en México, Estados Unidos, España, Colombia y Brasil.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-delay-2">
+        <div class="form-tabs">
+          <button class="form-tab active" data-tab="paciente">Paciente</button>
+          <button class="form-tab" data-tab="medico">Médico</button>
+          <button class="form-tab" data-tab="inversionista">Inversionista</button>
+          <button class="form-tab" data-tab="distribuidor">Distribuidor</button>
+        </div>
+
+        <form id="contact-form" onsubmit="handleSubmit(event)">
+          <!-- Shared fields -->
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Nombre</label>
+              <input type="text" class="form-input" placeholder="Dr. Nombre Apellido">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Profesional</label>
+              <input type="email" class="form-input" placeholder="correo@institución.com">
+            </div>
+          </div>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Teléfono</label>
+              <input type="tel" class="form-input" placeholder="+52 55 0000 0000">
+            </div>
+            <div class="form-group">
+              <label class="form-label">País</label>
+              <select class="form-select">
+                <option value="">Seleccionar país</option>
+                <option>México</option>
+                <option>Estados Unidos</option>
+                <option>Colombia</option>
+                <option>España</option>
+                <option>Argentina</option>
+                <option>Brasil</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Dynamic panel: Paciente -->
+          <div class="form-panel active" id="panel-paciente">
+            <div class="form-grid single">
+              <div class="form-group">
+                <label class="form-label">Condición o Diagnóstico</label>
+                <select class="form-select">
+                  <option value="">¿En qué área desea información?</option>
+                  <option>Heridas Crónicas / Úlceras</option>
+                  <option>Recuperación Post-quirúrgica</option>
+                  <option>Lesiones Traumáticas</option>
+                  <option>Pie Diabético</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic panel: Médico -->
+          <div class="form-panel" id="panel-medico">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Especialidad</label>
+                <select class="form-select">
+                  <option value="">Seleccionar especialidad</option>
+                  <option>Cirugía General</option>
+                  <option>Endocrinología</option>
+                  <option>Dermatología</option>
+                  <option>Medicina Interna</option>
+                  <option>Otra</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Institución</label>
+                <input type="text" class="form-input" placeholder="Hospital / Clínica">
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic panel: Inversionista -->
+          <div class="form-panel" id="panel-inversionista">
+            <div class="form-grid single">
+              <div class="form-group">
+                <label class="form-label">Tipo de Interés</label>
+                <select class="form-select">
+                  <option value="">Área de interés de inversión</option>
+                  <option>Capital de Riesgo / Venture Capital</option>
+                  <option>Inversión Estratégica Corporativa</option>
+                  <option>Licenciamiento de Propiedad Intelectual</option>
+                  <option>Partnership de Distribución</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic panel: Distribuidor -->
+          <div class="form-panel" id="panel-distribuidor">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Sector de Distribución</label>
+                <select class="form-select">
+                  <option value="">Seleccionar sector</option>
+                  <option>Farmacéutico</option>
+                  <option>Equipos Médicos</option>
+                  <option>Hospitalario</option>
+                  <option>Retail Especializado</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Empresa</label>
+                <input type="text" class="form-input" placeholder="Nombre de la empresa">
+              </div>
+            </div>
+          </div>
+
+          <!-- Message — shared -->
+          <div class="form-grid single" style="margin-top: 16px;">
+            <div class="form-group">
+              <label class="form-label">Mensaje o Consulta</label>
+              <textarea class="form-textarea" placeholder="Describa brevemente su interés o consulta específica..."></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="form-submit">
+            Enviar Solicitud — Dossier Científico
+          </button>
+          <p class="form-footer-note">
+            Al enviar, acepta nuestra <a href="#" style="color: var(--blue-600); text-decoration: none;">Política de Privacidad</a> y el tratamiento de datos conforme a normativas internacionales de salud aplicables.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="nav-logo" href="#">
+          <div class="nav-logo-mark">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+            </svg>
+          </div>
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">BIOREGEN DIABED</span>
+            <span class="nav-logo-sub">Medicina Regenerativa</span>
+          </div>
+        </a>
+        <p class="footer-tagline">
+          Corporación multinacional de biotecnología médica dedicada a la investigación, desarrollo y comercialización de sistemas de regeneración tisular de vanguardia.
+        </p>
+        <span class="footer-badge">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="3"/></svg>
+          Certificación ISO 13485 · MDR Compliant
+        </span>
+      </div>
+
+      <div class="footer-links-grid">
+        <div>
+          <div class="footer-link-group-title">Empresa</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Misión Científica</a></li>
+            <li><a href="#">Directorio</a></li>
+            <li><a href="#">Responsabilidad</a></li>
+            <li><a href="#">Prensa</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-link-group-title">Productos</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Inyección Molecular</a></li>
+            <li><a href="#">Parche Regenerativo</a></li>
+            <li><a href="#">Sistema Combinado</a></li>
+            <li><a href="#">Pipeline I+D</a></li>
+            <li><a href="#">Patentes</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-link-group-title">Científico</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Publicaciones</a></li>
+            <li><a href="#">Ensayos Clínicos</a></li>
+            <li><a href="#">Bibliografía</a></li>
+            <li><a href="#">Dossier Técnico</a></li>
+            <li><a href="#">Registros Sanitarios</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-link-group-title">Normativa</div>
+          <ul class="footer-link-list">
+            <li><a href="#">Regulación FDA</a></li>
+            <li><a href="#">COFEPRIS</a></li>
+            <li><a href="#">EMA / CE Mark</a></li>
+            <li><a href="#">HIPAA / GDPR</a></li>
+            <li><a href="#">Biovigilancia</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 BIOREGEN DIABED Corporation. Todos los derechos reservados. Patentes Internacionales en proceso.</span>
+      <div class="footer-legal">
+        <a href="#">Aviso de Privacidad</a>
+        <div class="footer-legal-sep"></div>
+        <a href="#">Términos de Uso</a>
+        <div class="footer-legal-sep"></div>
+        <a href="#">Tratamiento de Datos de Salud</a>
+        <div class="footer-legal-sep"></div>
+        <a href="#">Política de Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+// ============================================================
+// HERO CANVAS — Bioluminescent Cellular Regeneration
+// ============================================================
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, particles, rings, time = 0;
+
+  function resize() {
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.5 + 0.5;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
+      this.life = 0;
+      this.maxLife = Math.random() * 300 + 200;
+      this.color = Math.random() > 0.5 ? [2, 132, 199] : [13, 148, 136];
+    }
+    update() {
+      this.life++;
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.life >= this.maxLife) this.reset();
+    }
+    draw() {
+      const progress = this.life / this.maxLife;
+      const alpha = progress < 0.15 ? progress / 0.15 :
+                    progress > 0.85 ? (1 - progress) / 0.15 : 1;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.color.join(',')}, ${alpha * 0.7})`;
+      ctx.fill();
+    }
+  }
+
+  class Ring {
+    constructor() { this.reset(); }
+    reset() {
+      this.cx = Math.random() * W;
+      this.cy = Math.random() * H;
+      this.r = 0;
+      this.maxR = Math.random() * 180 + 60;
+      this.speed = Math.random() * 0.4 + 0.15;
+      this.alpha = Math.random() * 0.4 + 0.2;
+      this.color = Math.random() > 0.5
+        ? `rgba(2, 132, 199, ` : `rgba(13, 148, 136, `;
+    }
+    update() {
+      this.r += this.speed;
+      if (this.r >= this.maxR) this.reset();
+    }
+    draw() {
+      const progress = this.r / this.maxR;
+      const alpha = this.alpha * (1 - progress);
+      ctx.beginPath();
+      ctx.arc(this.cx, this.cy, this.r, 0, Math.PI * 2);
+      ctx.strokeStyle = this.color + alpha + ')';
+      ctx.lineWidth = 1.5 * (1 - progress * 0.5);
+      ctx.stroke();
+    }
+  }
+
+  // Gradient base
+  function drawBase() {
+    const grad = ctx.createRadialGradient(W * 0.3, H * 0.4, 0, W * 0.3, H * 0.4, Math.max(W, H) * 0.9);
+    grad.addColorStop(0, 'rgba(2, 132, 199, 0.12)');
+    grad.addColorStop(0.4, 'rgba(13, 148, 136, 0.06)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+    const grad2 = ctx.createRadialGradient(W * 0.75, H * 0.7, 0, W * 0.75, H * 0.7, Math.max(W, H) * 0.7);
+    grad2.addColorStop(0, 'rgba(13, 148, 136, 0.1)');
+    grad2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = grad2;
+    ctx.fillRect(0, 0, W, H);
+  }
+
+  // Grid overlay
+  function drawGrid() {
+    ctx.strokeStyle = 'rgba(2, 132, 199, 0.06)';
+    ctx.lineWidth = 1;
+    const spacing = 80;
+    for (let x = 0; x < W; x += spacing) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+    }
+    for (let y = 0; y < H; y += spacing) {
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+  }
+
+  function init() {
+    resize();
+    particles = Array.from({ length: 120 }, () => new Particle());
+    rings = Array.from({ length: 12 }, () => new Ring());
+    // Stagger rings
+    rings.forEach((r, i) => { r.r = (i / rings.length) * r.maxR; });
+    loop();
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+    drawBase();
+    drawGrid();
+    rings.forEach(r => { r.update(); r.draw(); });
+    particles.forEach(p => { p.update(); p.draw(); });
+
+    // Draw some connections
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 80) {
+          const alpha = (1 - d / 80) * 0.15;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(2, 132, 199, ${alpha})`;
+          ctx.stroke();
+        }
+      }
+    }
+
+    time++;
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize', () => {
+    resize();
+    particles.forEach(p => p.reset());
+    rings.forEach(r => r.reset());
+  });
+
+  init();
+})();
+
+
+// ============================================================
+// SYSTEM CANVAS — Phase-based 3D render simulation
+// ============================================================
+(function() {
+  const canvas = document.getElementById('system-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, animPhase = 1, t = 0, targetPhase = 1, blendT = 1;
+
+  function resize() {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width = rect.width;
+    H = canvas.height = rect.height;
+  }
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+  function drawPhase1(alpha) {
+    // Injection visualization — molecular targeting
+    const cx = W / 2, cy = H / 2;
+    const scale = Math.min(W, H) * 0.38;
+
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // Background glow
+    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, scale * 1.2);
+    grd.addColorStop(0, 'rgba(2, 132, 199, 0.12)');
+    grd.addColorStop(1, 'rgba(2, 132, 199, 0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, W, H);
+
+    // Central molecule
+    const pulse = Math.sin(t * 0.04) * 0.06 + 1;
+    ctx.beginPath();
+    ctx.arc(cx, cy, scale * 0.18 * pulse, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(2, 132, 199, 0.25)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, scale * 0.11 * pulse, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(2, 132, 199, 0.5)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, scale * 0.055 * pulse, 0, Math.PI * 2);
+    ctx.fillStyle = '#0284C7';
+    ctx.fill();
+
+    // Orbiting atoms
+    const orbitCount = 6;
+    for (let i = 0; i < orbitCount; i++) {
+      const angle = (i / orbitCount) * Math.PI * 2 + t * 0.018;
+      const ox = cx + Math.cos(angle) * scale * 0.42;
+      const oy = cy + Math.sin(angle) * scale * 0.42 * 0.45; // ellipse
+
+      // Orbit path
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, scale * 0.42, scale * 0.42 * 0.45, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(2, 132, 199, 0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // Bond line
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(ox, oy);
+      ctx.strokeStyle = 'rgba(2, 132, 199, 0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Atom
+      ctx.beginPath();
+      ctx.arc(ox, oy, scale * 0.055, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(56, 189, 248, 0.35)';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(ox, oy, scale * 0.03, 0, Math.PI * 2);
+      ctx.fillStyle = '#38BDF8';
+      ctx.fill();
+    }
+
+    // Pulse rings emanating
+    for (let r = 0; r < 3; r++) {
+      const progress = ((t * 0.008 + r / 3) % 1);
+      const radius = progress * scale * 0.9;
+      const ringAlpha = (1 - progress) * 0.4;
+      ctx.beginPath();
+      ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(2, 132, 199, ${ringAlpha})`;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    // Label
+    ctx.font = `700 ${Math.max(11, W * 0.025)}px Inter, sans-serif`;
+    ctx.fillStyle = 'rgba(2, 132, 199, 0.7)';
+    ctx.textAlign = 'center';
+    ctx.fillText('INYECCIÓN MOLECULAR ACTIVA', cx, H - 28);
+    ctx.font = `400 ${Math.max(10, W * 0.02)}px Inter, sans-serif`;
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillText('Estimulación de factores de crecimiento', cx, H - 12);
+
+    ctx.restore();
+  }
+
+  function drawPhase2(alpha) {
+    // Patch visualization — bioactive matrix
+    const cx = W / 2, cy = H / 2;
+    const scale = Math.min(W, H) * 0.35;
+
+    ctx.save();
+    ctx.globalAlpha = alpha;
+
+    // Background glow — teal
+    const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, scale * 1.2);
+    grd.addColorStop(0, 'rgba(13, 148, 136, 0.14)');
+    grd.addColorStop(1, 'rgba(13, 148, 136, 0)');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0, 0, W, H);
+
+    // Patch body — rounded rect
+    const pw = scale * 1.3, ph = scale * 0.7;
+    const px = cx - pw / 2, py = cy - ph / 2;
+    const wave = Math.sin(t * 0.02) * 4;
+
+    ctx.save();
+    ctx.translate(0, wave);
+
+    // Patch outer glow
+    ctx.shadowColor = 'rgba(13, 148, 136, 0.5)';
+    ctx.shadowBlur = 30;
+
+    // Patch body
+    ctx.beginPath();
+    roundRect(ctx, px, py, pw, ph, 16);
+    const pGrad = ctx.createLinearGradient(px, py, px, py + ph);
+    pGrad.addColorStop(0, 'rgba(13, 148, 136, 0.5)');
+    pGrad.addColorStop(1, 'rgba(17, 94, 89, 0.7)');
+    ctx.fillStyle = pGrad;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(45, 212, 191, 0.6)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.shadowBlur = 0;
+
+    // Grid micropattern on patch
+    ctx.save();
+    ctx.beginPath();
+    roundRect(ctx, px, py, pw, ph, 16);
+    ctx.clip();
+    ctx.strokeStyle = 'rgba(45, 212, 191, 0.18)';
+    ctx.lineWidth = 1;
+    const gridSpacing = scale * 0.09;
+    for (let gx = px; gx < px + pw; gx += gridSpacing) {
+      ctx.beginPath(); ctx.moveTo(gx, py); ctx.lineTo(gx, py + ph); ctx.stroke();
+    }
+    for (let gy = py; gy < py + ph; gy += gridSpacing) {
+      ctx.beginPath(); ctx.moveTo(px, gy); ctx.lineTo(px + pw, gy); ctx.stroke();
+    }
+    ctx.restore();
+
+    // Release droplets
+    for (let d = 0; d < 8; d++) {
+      const dropT = ((t * 0.006 + d / 8) % 1);
+      const dx = px + (d / 7) * pw;
+      const dy = py + ph + dropT * scale * 0.45;
+      const dropAlpha = (1 - dropT) * 0.6;
+      const dropR = (1 - dropT * 0.5) * scale * 0.025;
+      ctx.beginPath();
+      ctx.arc(dx, dy, dropR, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(45, 212, 191, ${dropAlpha})`;
+      ctx.fill();
+    }
+
+    // Moisture shield indicator
+    ctx.beginPath();
+    ctx.ellipse(cx, py - scale * 0.1, pw * 0.45, scale * 0.07, 0, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(45, 212, 191, 0.25)';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 6]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    ctx.restore();
+
+    // Label
+    ctx.font = `700 ${Math.max(11, W * 0.025)}px Inter, sans-serif`;
+    ctx.fillStyle = 'rgba(13, 148, 136, 0.8)';
+    ctx.textAlign = 'center';
+    ctx.fillText('PARCHE REGENERATIVO EXTERNO', cx, H - 28);
+    ctx.font = `400 ${Math.max(10, W * 0.02)}px Inter, sans-serif`;
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillText('Matriz bioactiva de liberación controlada', cx, H - 12);
+
+    ctx.restore();
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.moveTo(x + r, y);
+    ctx.lineTo(x + w - r, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+    ctx.lineTo(x + w, y + h - r);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+    ctx.lineTo(x + r, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+    ctx.lineTo(x, y + r);
+    ctx.quadraticCurveTo(x, y, x + r, y);
+  }
+
+  let currentBlend = 1; // 1 = phase1, 0 = phase2
+
+  function loop() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Dark background
+    ctx.fillStyle = '#0F1620';
+    ctx.fillRect(0, 0, W, H);
+
+    // Blend between phases
+    if (animPhase === 1) {
+      currentBlend = Math.min(1, currentBlend + 0.025);
+    } else {
+      currentBlend = Math.max(0, currentBlend - 0.025);
+    }
+
+    if (currentBlend > 0) drawPhase1(currentBlend);
+    if (currentBlend < 1) drawPhase2(1 - currentBlend);
+
+    t++;
+    requestAnimationFrame(loop);
+  }
+
+  window.setSystemPhase = function(phase) {
+    animPhase = phase;
+    const label = document.getElementById('canvas-label');
+    if (label) {
+      label.textContent = phase === 1
+        ? 'Fase 01 — Inyección Molecular'
+        : 'Fase 02 — Parche Regenerativo';
+    }
+  };
+
+  window.addEventListener('resize', resize);
+  resize();
+  loop();
+})();
+
+
+// ============================================================
+// NAVIGATION SCROLL BEHAVIOR
+// ============================================================
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+
+// ============================================================
+// SCROLL REVEAL
+// ============================================================
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+
+// ============================================================
+// SYSTEM PHASE DETECT — Intersection Observer for phases
+// ============================================================
+const phaseObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const phase = parseInt(entry.target.getAttribute('data-phase'));
+      if (window.setSystemPhase) window.setSystemPhase(phase);
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.4 });
+
+document.querySelectorAll('.system-phase').forEach(el => phaseObserver.observe(el));
+
+
+// ============================================================
+// FORM TABS
+// ============================================================
+document.querySelectorAll('.form-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const target = document.getElementById('panel-' + tab.getAttribute('data-tab'));
+    if (target) target.classList.add('active');
+  });
+});
+
+
+// ============================================================
+// FORM SUBMIT
+// ============================================================
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.form-submit');
+  const original = btn.textContent;
+  btn.textContent = '✓ Solicitud enviada — Le contactaremos pronto';
+  btn.style.background = 'linear-gradient(135deg, #0D9488 0%, #115E59 100%)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.style.background = '';
+    btn.disabled = false;
+  }, 4000);
+}
+
+
+// ============================================================
+// 3D TILT — Pillar cards
+// ============================================================
+document.querySelectorAll('.pillar-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    card.style.transform = `translateY(-4px) perspective(800px) rotateX(${-dy * 4}deg) rotateY(${dx * 4}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+  });
+});
+
+
+// ============================================================
+// COUNTER ANIMATION
+// ============================================================
+function animateCounter(el, target, suffix = '', decimals = 0) {
+  let start = 0;
+  const duration = 1800;
+  const startTime = performance.now();
+  const update = (now) => {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const value = start + (target - start) * ease;
+    el.textContent = decimals ? value.toFixed(decimals) + suffix : Math.round(value) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const val = parseFloat(el.getAttribute('data-value'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      animateCounter(el, val, suffix);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-value]').forEach(el => counterObserver.observe(el));
+
+</script>
+</body>
+</html>
